@@ -1,0 +1,5 @@
+spill_type,period,P_late30,P_late90
+Recent,pre_2020,0.00365,0.000239
+Recent,post_2020,0.007531,0.003581
+Historical,pre_2020,0.025917,0.008854
+Historical,post_2020,0.040456,0.021834

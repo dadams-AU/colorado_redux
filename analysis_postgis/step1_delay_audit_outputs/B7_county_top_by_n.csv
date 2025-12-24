@@ -1,0 +1,4 @@
+county_norm,n_total,pct_ge_99,pct_is_99,median_delay,p95_delay,p99_delay
+WELD,20874.0,0.7761,0.0383,1.0,4.0,58.0
+GARFIELD,3478.0,0.1725,0.0,1.0,6.0,21.0
+RIO BLANCO,2024.0,0.9881,0.0988,1.0,18.0,92.0

@@ -20,3 +20,7 @@ python-dateutil>=2.9
 
 # Plotting
 matplotlib>=3.9
+
+# Testing
+pytest>=7.0
+statsmodels>=0.14

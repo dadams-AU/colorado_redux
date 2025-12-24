@@ -1,0 +1,4 @@
+rurality_3,n_total,pct_ge_99,pct_is_99,median_delay,p95_delay,p99_delay
+Urban,13854.0,0.8084,0.0144,1.0,4.0,64.0
+Rural,10564.0,0.5869,0.0189,1.0,6.0,50.0
+Suburban,1958.0,0.715,0.3064,1.0,8.0,37.45

@@ -1,0 +1,4 @@
+variant,post,post_se,post:historical,int_se
+baseline,0.733227,0.471128,-0.255636,0.527887
+cap180 (affects DV only via delay; late30 unchanged),0.733227,0.471128,-0.255636,0.527887
+exclude_extreme99,0.147381,0.633244,-0.152764,0.766658

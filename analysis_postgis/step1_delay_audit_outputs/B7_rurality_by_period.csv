@@ -1,0 +1,7 @@
+rurality_3,period,n_total,pct_ge_99,median_delay,p95_delay
+Rural,post_2020,5900.0,1.0508,1.0,5.0
+Rural,pre_2020,4664.0,0.0,1.0,7.0
+Suburban,post_2020,1230.0,0.9756,1.0,5.0
+Suburban,pre_2020,728.0,0.2747,1.0,9.0
+Urban,post_2020,8574.0,1.073,0.0,3.0
+Urban,pre_2020,5280.0,0.3788,1.0,4.0

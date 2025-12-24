@@ -1,0 +1,5 @@
+period,spill_type,n,n_disc_missing,n_rpt_missing,pct_disc_missing,pct_rpt_missing
+post_2020,Historical,7518,0,0,0.0,0.0
+post_2020,Recent,8186,0,0,0.0,0.0
+pre_2020,Historical,3776,0,0,0.0,0.0
+pre_2020,Recent,6896,0,0,0.0,0.0

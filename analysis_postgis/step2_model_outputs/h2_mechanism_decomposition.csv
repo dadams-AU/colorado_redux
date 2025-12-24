@@ -1,0 +1,5 @@
+spill_type,period,P_any_delay,E_delay_if_pos
+Recent,pre_2020,0.745056,2.03
+Recent,post_2020,0.572983,1.862
+Historical,pre_2020,0.702362,2.376
+Historical,post_2020,0.449043,2.904

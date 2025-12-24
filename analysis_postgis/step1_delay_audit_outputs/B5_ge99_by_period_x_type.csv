@@ -1,0 +1,5 @@
+period,spill_type,n_total,n_true,pct_true_within_group,pct_true_of_total_rows
+post_2020,Historical,7518,136,1.809,0.5156
+post_2020,Recent,8186,30,0.3665,0.1137
+pre_2020,Historical,3776,22,0.5826,0.0834
+pre_2020,Recent,6896,0,0.0,0.0
