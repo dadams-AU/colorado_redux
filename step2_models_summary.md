@@ -149,10 +149,10 @@ H2_logit_extreme99 post:historical -7.745245 1.352117     0.000433    0.000031  
 Predicted P(late30) by spill type × period (marginal standardization):
 ```
    period spill_type     mean  ci95_lo  ci95_hi
- pre_2020     Recent 0.003650 0.002516 0.005803
- pre_2020 Historical 0.025917 0.011911 0.055095
-post_2020     Recent 0.007531 0.001719 0.036008
-post_2020 Historical 0.040456 0.025171 0.066593
+ pre_2020     Recent 0.003650 0.002540 0.006059
+ pre_2020 Historical 0.025917 0.013634 0.053852
+post_2020     Recent 0.007531 0.001641 0.035640
+post_2020 Historical 0.040456 0.027033 0.063493
 ```
 Plot saved: `/home/dadams/Repos/colorado_redux/analysis_postgis/step2_model_outputs/pred_late30_pre_post_by_type.png`
 
@@ -170,12 +170,12 @@ H3_logit_late30_post_x_rurality                post:historical -0.338292 0.56040
 Predicted P(late30) by rurality × period for Recent (historical=0):
 ```
 rurality_3    period     mean  ci95_lo  ci95_hi
-     Rural  pre_2020 0.003888 0.002920 0.005291
-     Rural post_2020 0.008273 0.001659 0.044027
-  Suburban  pre_2020 0.008794 0.003148 0.027430
-  Suburban post_2020 0.005985 0.001151 0.028051
-     Urban  pre_2020 0.002616 0.000923 0.007801
-     Urban post_2020 0.006914 0.001084 0.043393
+     Rural  pre_2020 0.003888 0.003068 0.005158
+     Rural post_2020 0.008273 0.002011 0.034750
+  Suburban  pre_2020 0.008794 0.002722 0.029414
+  Suburban post_2020 0.005985 0.001199 0.027790
+     Urban  pre_2020 0.002616 0.000805 0.008285
+     Urban post_2020 0.006914 0.001043 0.035573
 ```
 Plot saved: `/home/dadams/Repos/colorado_redux/analysis_postgis/step2_model_outputs/pred_late30_pre_post_by_rurality_recent.png`
 
