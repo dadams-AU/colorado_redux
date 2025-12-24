@@ -12,6 +12,20 @@ This report diagnoses whether `delay_days` values (especially 99+) look like tru
 - County column: `county`
 - RUCA/rurality source column: `rurality`
 
+### Appendix A — Measurement audit table (reporting delay)
+
+Reporting delay is defined as the whole-day difference between discovery and initial report dates.
+
+| Check | Result |
+| --- | ---: |
+| Observations (rows) | 26,376 |
+| Missing `delay_days` | 0 (0.0%) |
+| Non-integer `delay_days` | 0 |
+| Missing discovery date (`Date of Discovery`) | 0 (0.0%) |
+| Missing initial report date (`Initial Report Date`) | 0 (0.0%) |
+| Random verification sample size | 200 |
+| Mismatches: recomputed vs. provided delay (tolerance = 1e-06) | 0 (0.0%) |
+
 ## A) Heaping / spikes at key values
 ### A1) Exact-value frequency (key values)
 ```

@@ -1,7 +1,9 @@
-# Paper Tables (from exported CSV artifacts + in-memory descriptives)
+# Paper Tables (journal-ready markdown)
 
 Source folder (CSVs): `/home/dadams/Repos/colorado_redux/analysis_postgis/step2_model_outputs`
 Generated: `/home/dadams/Repos/colorado_redux/step2_paper_tables.md`
+
+Significance: * p<0.10, ** p<0.05, *** p<0.01
 
 ## Table D1: Traditional descriptives
 
@@ -26,43 +28,47 @@ Generated: `/home/dadams/Repos/colorado_redux/step2_paper_tables.md`
 ### Table H1-A: Descriptive mix by period
 | period | n_total | pct_historical |
 | --- | --- | --- |
-| post_2020 | 15704 | 47.873 |
-| pre_2020 | 10672 | 35.382 |
+| post_2020 | 15704 | 47.9 |
+| pre_2020 | 10672 | 35.4 |
 
-### Table H1-B: Baseline spill-level logit + marginal predicted pct_historical
-**Panel 1: OR for post (controls: county + rurality)**
-| term | OR | CI95_lo | CI95_hi | p |
-| --- | --- | --- | --- | --- |
-| post | 1.647 | 1.557 | 1.743 | 0.000 |
+### Table H1-B: Spill-level logit (post effect) + predicted pct_historical
+**Panel 1: Logit OR for Post**
+| Term | OR [95% CI] | p |
+| --- | --- | --- |
+| Post | 1.647*** [1.557, 1.743] | <0.001 |
 
-**Panel 2: model-implied pct_historical pre vs post (marginal)**
+**Panel 2: Model-implied pct_historical (marginal)**
 | period | pred_pct_historical |
 | --- | --- |
-| pre_2020 | 36.826 |
-| post_2020 | 46.762 |
+| pre_2020 | 36.8 |
+| post_2020 | 46.8 |
 
-### Table H1-C (Appendix): Operator FE LPM (post coefficient; clustered by operator)
-| term | coef | se | p |
-| --- | --- | --- | --- |
-| post | 0.107 | 0.032 | 0.001 |
+### Table H1-C (Appendix): Operator FE LPM (post coefficient)
+| Term | Estimate (SE) | p |
+| --- | --- | --- |
+| Post | 0.107*** (0.032) | <0.001 |
+
+Note: Standard errors are clustered by operator.
 
 ## Claim 2: Typical reporting timeliness improves post-2020
 
-### Table H2-A: OLS on log(1+delay) (cluster by operator)
-| term | coef | se | p |
-| --- | --- | --- | --- |
-| post | -0.220 | 0.060 | 0.000 |
-| historical | 0.043 | 0.091 | 0.636 |
-| post:historical | 0.008 | 0.081 | 0.923 |
+### Table H2-A: OLS on log(1+delay) (core terms)
+| Term | Estimate (SE) | p |
+| --- | --- | --- |
+| Post | -0.220*** (0.060) | <0.001 |
+| Historical | 0.043 (0.091) | 0.636 |
+| Post × Historical | 0.008 (0.081) | 0.923 |
+
+Note: Standard errors are clustered by operator; model includes operator fixed effects and county/rurality controls.
 
 ### Table H2-A′ (Appendix): Same model clustered by county
-| term | coef | se | p |
-| --- | --- | --- | --- |
-| post | -0.220 | 0.013 | 0.000 |
-| historical | 0.043 | 0.017 | 0.009 |
-| post:historical | 0.008 | 0.020 | 0.697 |
+| Term | Estimate (SE) | p |
+| --- | --- | --- |
+| Post | -0.220*** (0.013) | <0.001 |
+| Historical | 0.043*** (0.017) | 0.009 |
+| Post × Historical | 0.008 (0.020) | 0.697 |
 
-### Table R1 (Appendix): Robustness continuous key terms (baseline vs cap180 vs exclude_extreme99)
+### Table R1 (Appendix): Robustness (key terms)
 | variant | post | post_se | post:historical | int_se |
 | --- | --- | --- | --- | --- |
 | baseline | -0.220 | 0.060 | 0.008 | 0.081 |
@@ -71,162 +77,162 @@ Generated: `/home/dadams/Repos/colorado_redux/step2_paper_tables.md`
 
 ## Claim 3: Mechanism is mostly fewer any-delay cases; tail behaves differently for Historical
 
-### Table H2-B: Two-part model coefficients
+### Table H2-B: Two-part model (core terms)
 **Panel 1: any_delay logit (ORs)**
-| term | OR | CI95_lo | CI95_hi | p |
-| --- | --- | --- | --- | --- |
-| post | 0.420 | 0.244 | 0.724 | 0.002 |
-| historical | 0.790 | 0.520 | 1.198 | 0.267 |
-| post:historical | 0.721 | 0.437 | 1.190 | 0.200 |
+| Term | OR [95% CI] | p |
+| --- | --- | --- |
+| Post | 0.420*** [0.244, 0.724] | 0.002 |
+| Historical | 0.790 [0.520, 1.198] | 0.267 |
+| Post × Historical | 0.721 [0.437, 1.190] | 0.200 |
 
 **Panel 2: conditional delay>0 OLS (coefficients)**
-| term | coef | se | p |
-| --- | --- | --- | --- |
-| post | -0.057 | 0.048 | 0.237 |
-| historical | 0.108 | 0.080 | 0.177 |
-| post:historical | 0.202 | 0.068 | 0.003 |
+| Term | Estimate (SE) | p |
+| --- | --- | --- |
+| Post | -0.057 (0.048) | 0.237 |
+| Historical | 0.108 (0.080) | 0.177 |
+| Post × Historical | 0.202*** (0.068) | 0.003 |
 
-### Table H2-C: Mechanism decomposition (P(any_delay) + E(delay|delay>0) by spill type × period)
+### Table H2-C: Mechanism decomposition (by spill type × period)
 | spill_type | period | P_any_delay | E_delay_if_pos |
 | --- | --- | --- | --- |
-| Recent | pre_2020 | 0.745 | 2.030 |
-| Recent | post_2020 | 0.573 | 1.862 |
-| Historical | pre_2020 | 0.702 | 2.376 |
-| Historical | post_2020 | 0.449 | 2.904 |
+| Recent | pre_2020 | 0.7 | 2.03 |
+| Recent | post_2020 | 0.6 | 1.86 |
+| Historical | pre_2020 | 0.7 | 2.38 |
+| Historical | post_2020 | 0.4 | 2.90 |
 
 ## Claim 4: Extreme delays remain rare but increase post-2020 and are concentrated in Historical cases
 
-### Table H2-D: Predicted probabilities for late30 and late90 by spill type × period
+### Table H2-D: Predicted probabilities for late30 and late90 (by spill type × period)
 | spill_type | period | P_late30 | P_late90 |
 | --- | --- | --- | --- |
-| Recent | pre_2020 | 0.004 | 0.000 |
-| Recent | post_2020 | 0.008 | 0.004 |
-| Historical | pre_2020 | 0.026 | 0.009 |
-| Historical | post_2020 | 0.040 | 0.022 |
+| Recent | pre_2020 | 0.0 | 0.0 |
+| Recent | post_2020 | 0.0 | 0.0 |
+| Historical | pre_2020 | 0.0 | 0.0 |
+| Historical | post_2020 | 0.0 | 0.0 |
 
-### Table H2-E (Appendix): late30 and late90 logit coefficients (ORs)
+### Table H2-E (Appendix): late30 and late90 logits (core terms)
 **Panel 1: late30 logit (ORs)**
-| term | OR | CI95_lo | CI95_hi | p |
-| --- | --- | --- | --- | --- |
-| post | 2.082 | 0.827 | 5.242 | 0.120 |
-| historical | 7.471 | 2.364 | 23.605 | 0.001 |
-| post:historical | 0.774 | 0.275 | 2.179 | 0.628 |
+| Term | OR [95% CI] | p |
+| --- | --- | --- |
+| Post | 2.082 [0.827, 5.242] | 0.120 |
+| Historical | 7.471*** [2.364, 23.605] | <0.001 |
+| Post × Historical | 0.774 [0.275, 2.179] | 0.628 |
 
 **Panel 2: late90 logit (ORs)**
-| term | OR | CI95_lo | CI95_hi | p |
-| --- | --- | --- | --- | --- |
-| post | 15.055 | 1.631 | 139.000 | 0.017 |
-| historical | 37.544 | 3.303 | 426.734 | 0.003 |
-| post:historical | 0.167 | 0.016 | 1.751 | 0.136 |
+| Term | OR [95% CI] | p |
+| --- | --- | --- |
+| Post | 15.055** [1.631, 139.000] | 0.017 |
+| Historical | 37.544*** [3.303, 426.734] | 0.003 |
+| Post × Historical | 0.167 [0.016, 1.751] | 0.136 |
 
-### Table E99 (Appendix): Ridge extreme99 predicted probabilities and risk ratios
+### Table E99 (Appendix): Ridge extreme99 predicted probabilities
 | spill_type | p_pre | p_post | risk_ratio | risk_diff |
 | --- | --- | --- | --- | --- |
-| Recent | 0.095 | 0.303 | 3.169 | 0.207 |
-| Historical | 0.374 | 0.707 | 1.888 | 0.333 |
+| Recent | 0.1 | 0.3 | 3.17 | 0.21 |
+| Historical | 0.4 | 0.7 | 1.89 | 0.33 |
 
 ## Claim 5: Geography moderates improvement (tempered rural lag)
 
-### Table H3-A: Interaction/joint tests summary
-| outcome | test | stat | df | p_value |
+### Table H3-A: Joint tests for post×rurality
+| Outcome | Test | Statistic | df | p |
 | --- | --- | --- | --- | --- |
-| any_delay | χ² | 1.667 | 2 | 0.434483 |
-| log1p_delay | F | 3.278 | (2, 141) | 0.0405981 |
-| late90 | χ² | 0.685 | 2 | 0.709937 |
+| Any delay | χ² | 1.667 | 2 | 0.434 |
+| log(1+delay) | F | 3.278 | (2, 141) | 0.041 |
+| Late ≥90 | χ² | 0.685 | 2 | 0.710 |
 
 ### Table H3-B: Rurality gradient (Recent spills only)
 | rurality_3 | period | P_any_delay | implied_mean_delay | P_late30 | P_late90 |
 | --- | --- | --- | --- | --- | --- |
-| Rural | pre_2020 | 0.757 | 1.470 | 0.006 | 0.000 |
-| Rural | post_2020 | 0.645 | 1.119 | 0.012 | 0.005 |
-| Suburban | pre_2020 | 0.714 | 1.544 | 0.003 | 0.000 |
-| Suburban | post_2020 | 0.541 | 0.867 | 0.006 | 0.003 |
-| Urban | pre_2020 | 0.735 | 1.216 | 0.002 | 0.000 |
-| Urban | post_2020 | 0.536 | 0.664 | 0.005 | 0.003 |
+| Rural | pre_2020 | 0.757073 | 1.47 | 0.005869 | 0.000344 |
+| Rural | post_2020 | 0.645204 | 1.12 | 0.012055 | 0.005139 |
+| Suburban | pre_2020 | 0.71421 | 1.54 | 0.002721 | 0.000188 |
+| Suburban | post_2020 | 0.540791 | 0.87 | 0.005649 | 0.002819 |
+| Urban | pre_2020 | 0.735393 | 1.22 | 0.002262 | 0.000167 |
+| Urban | post_2020 | 0.536487 | 0.66 | 0.004697 | 0.002508 |
 
 ## Claim 6: Operator + geography variation (profiling deliverables)
 
 ### Table VAR-A: County adjusted predicted probabilities
 | county_norm | n_total | p_late30_adj | p_late90_adj |
 | --- | --- | --- | --- |
-| GARFIELD | 3478 | 0.575 | 0.171 |
-| RIO BLANCO | 2024 | 4.349 | 1.284 |
-| WELD | 20874 | 1.456 | 0.805 |
+| GARFIELD | 3478 | 0.6 | 0.2 |
+| RIO BLANCO | 2024 | 4.3 | 1.3 |
+| WELD | 20874 | 1.5 | 0.8 |
 
 ### Operator risk profiles (Appendix): Top/Bottom 15
 **Top 15 any_delay**
-| operator | n_total | p_late30_adj | p_any_adj |
+| Rank | Operator | N | Adj. P(any delay) (%) |
 | --- | --- | --- | --- |
-| SYNERGY RESOURCES CORPORATION | 100 | 1.304 | 95.994 |
-| BARRETT CORPORATION* BILL | 140 | 0.817 | 91.400 |
-| VANGUARD OPERATING LLC | 68 | 0.301 | 91.132 |
-| BISON OIL & GAS II LLC | 52 | 0.472 | 88.411 |
-| BAYSWATER EXPLORATION & PRODUCTION LLC | 116 | 0.820 | 88.007 |
-| BNN WESTERN LLC | 50 | 0.308 | 87.927 |
-| FUNDARE RESOURCES OPERATING COMPANY LLC | 196 | 0.812 | 87.736 |
-| XTO ENERGY INC | 184 | 2.779 | 84.785 |
-| NOBLE MIDSTREAM SERVICES LLC | 78 | 0.414 | 84.593 |
-| BERRY PETROLEUM COMPANY LLC | 64 | 0.329 | 84.214 |
-| URSA OPERATING COMPANY LLC | 110 | 2.990 | 83.626 |
-| BAYSWATER EXPLORATION AND PRODUCTION LLC | 76 | 0.709 | 81.611 |
-| CHEVRON USA INC | 872 | 3.470 | 80.964 |
-| FOUNDATION ENERGY MANAGEMENT LLC | 160 | 0.705 | 79.963 |
-| LARAMIE ENERGY LLC | 286 | 0.595 | 79.758 |
+| 1 | SYNERGY RESOURCES CORPORATION | 100 | 96.0 |
+| 2 | BARRETT CORPORATION* BILL | 140 | 91.4 |
+| 3 | VANGUARD OPERATING LLC | 68 | 91.1 |
+| 4 | BISON OIL & GAS II LLC | 52 | 88.4 |
+| 5 | BAYSWATER EXPLORATION & PRODUCTION LLC | 116 | 88.0 |
+| 6 | BNN WESTERN LLC | 50 | 87.9 |
+| 7 | FUNDARE RESOURCES OPERATING COMPANY LLC | 196 | 87.7 |
+| 8 | XTO ENERGY INC | 184 | 84.8 |
+| 9 | NOBLE MIDSTREAM SERVICES LLC | 78 | 84.6 |
+| 10 | BERRY PETROLEUM COMPANY LLC | 64 | 84.2 |
+| 11 | URSA OPERATING COMPANY LLC | 110 | 83.6 |
+| 12 | BAYSWATER EXPLORATION AND PRODUCTION LLC | 76 | 81.6 |
+| 13 | CHEVRON USA INC | 872 | 81.0 |
+| 14 | FOUNDATION ENERGY MANAGEMENT LLC | 160 | 80.0 |
+| 15 | LARAMIE ENERGY LLC | 286 | 79.8 |
 
 **Bottom 15 any_delay**
-| operator | n_total | p_late30_adj | p_any_adj |
+| Rank | Operator | N | Adj. P(any delay) (%) |
 | --- | --- | --- | --- |
-| KERR MCGEE OIL & GAS ONSHORE LP | 4714 | 1.801 | 34.028 |
-| CHEVRON PRODUCTION COMPANY | 72 | 1.807 | 36.083 |
-| WPX ENERGY ROCKY MOUNTAIN LLC | 164 | 0.491 | 36.518 |
-| NGL WATER SOLUTIONS DJ LLC | 138 | 0.359 | 49.310 |
-| HIGHPOINT OPERATING CORPORATION | 856 | 0.709 | 50.234 |
-| K P KAUFFMAN COMPANY INC | 72 | 0.778 | 52.895 |
-| CAERUS PICEANCE LLC | 2194 | 1.478 | 53.702 |
-| EXTRACTION OIL & GAS INC | 494 | 1.037 | 54.632 |
-| BONANZA CREEK ENERGY OPERATING COMPANY LLC | 1130 | 0.755 | 55.773 |
-| SUMMIT MIDSTREAM PARTNERS LLC | 78 | 0.503 | 56.398 |
-| KERR MCGEE GATHERING LLC | 250 | 0.756 | 56.773 |
-| TAPROOT ROCKIES MIDSTREAM LLC | 52 | 0.589 | 57.472 |
-| VERDAD RESOURCES LLC | 144 | 0.643 | 58.332 |
-| NOBLE ENERGY INC | 5430 | 1.973 | 61.807 |
-| UTAH GAS OP LTD DBA UTAH GAS CORP | 122 | 9.191 | 62.260 |
+| 1 | KERR MCGEE OIL & GAS ONSHORE LP | 4714 | 34.0 |
+| 2 | CHEVRON PRODUCTION COMPANY | 72 | 36.1 |
+| 3 | WPX ENERGY ROCKY MOUNTAIN LLC | 164 | 36.5 |
+| 4 | NGL WATER SOLUTIONS DJ LLC | 138 | 49.3 |
+| 5 | HIGHPOINT OPERATING CORPORATION | 856 | 50.2 |
+| 6 | K P KAUFFMAN COMPANY INC | 72 | 52.9 |
+| 7 | CAERUS PICEANCE LLC | 2194 | 53.7 |
+| 8 | EXTRACTION OIL & GAS INC | 494 | 54.6 |
+| 9 | BONANZA CREEK ENERGY OPERATING COMPANY LLC | 1130 | 55.8 |
+| 10 | SUMMIT MIDSTREAM PARTNERS LLC | 78 | 56.4 |
+| 11 | KERR MCGEE GATHERING LLC | 250 | 56.8 |
+| 12 | TAPROOT ROCKIES MIDSTREAM LLC | 52 | 57.5 |
+| 13 | VERDAD RESOURCES LLC | 144 | 58.3 |
+| 14 | NOBLE ENERGY INC | 5430 | 61.8 |
+| 15 | UTAH GAS OP LTD DBA UTAH GAS CORP | 122 | 62.3 |
 
 **Top 15 late30**
-| operator | n_total | p_late30_adj | p_any_adj |
-| --- | --- | --- | --- |
-| UTAH GAS OP LTD DBA UTAH GAS CORP | 122 | 9.191 | 62.260 |
-| SCOUT ENERGY MANAGEMENT LLC | 106 | 4.021 | 79.231 |
-| CHEVRON USA INC | 872 | 3.470 | 80.964 |
-| URSA OPERATING COMPANY LLC | 110 | 2.990 | 83.626 |
-| XTO ENERGY INC | 184 | 2.779 | 84.785 |
-| NOBLE ENERGY INC | 5430 | 1.973 | 61.807 |
-| CHEVRON PRODUCTION COMPANY | 72 | 1.807 | 36.083 |
-| KERR MCGEE OIL & GAS ONSHORE LP | 4714 | 1.801 | 34.028 |
-| PDC ENERGY INC | 2454 | 1.690 | 66.911 |
-| CRESTONE PEAK RESOURCES OPERATING LLC | 694 | 1.568 | 62.527 |
-| CAERUS PICEANCE LLC | 2194 | 1.478 | 53.702 |
-| SYNERGY RESOURCES CORPORATION | 100 | 1.304 | 95.994 |
-| SRC ENERGY INC | 158 | 1.111 | 65.833 |
-| WHITING OIL & GAS CORPORATION | 446 | 1.090 | 62.769 |
-| EXTRACTION OIL & GAS INC | 494 | 1.037 | 54.632 |
+| Rank | Operator | N | Adj. P(late ≥30) (%) | Adj. P(any delay) (%) |
+| --- | --- | --- | --- | --- |
+| 1 | UTAH GAS OP LTD DBA UTAH GAS CORP | 122 | 9.2 | 62.3 |
+| 2 | SCOUT ENERGY MANAGEMENT LLC | 106 | 4.0 | 79.2 |
+| 3 | CHEVRON USA INC | 872 | 3.5 | 81.0 |
+| 4 | URSA OPERATING COMPANY LLC | 110 | 3.0 | 83.6 |
+| 5 | XTO ENERGY INC | 184 | 2.8 | 84.8 |
+| 6 | NOBLE ENERGY INC | 5430 | 2.0 | 61.8 |
+| 7 | CHEVRON PRODUCTION COMPANY | 72 | 1.8 | 36.1 |
+| 8 | KERR MCGEE OIL & GAS ONSHORE LP | 4714 | 1.8 | 34.0 |
+| 9 | PDC ENERGY INC | 2454 | 1.7 | 66.9 |
+| 10 | CRESTONE PEAK RESOURCES OPERATING LLC | 694 | 1.6 | 62.5 |
+| 11 | CAERUS PICEANCE LLC | 2194 | 1.5 | 53.7 |
+| 12 | SYNERGY RESOURCES CORPORATION | 100 | 1.3 | 96.0 |
+| 13 | SRC ENERGY INC | 158 | 1.1 | 65.8 |
+| 14 | WHITING OIL & GAS CORPORATION | 446 | 1.1 | 62.8 |
+| 15 | EXTRACTION OIL & GAS INC | 494 | 1.0 | 54.6 |
 
 **Bottom 15 late30**
-| operator | n_total | p_late30_adj | p_any_adj |
-| --- | --- | --- | --- |
-| EOG RESOURCES INC | 104 | 0.301 | 74.973 |
-| VANGUARD OPERATING LLC | 68 | 0.301 | 91.132 |
-| BNN WESTERN LLC | 50 | 0.308 | 87.927 |
-| BERRY PETROLEUM COMPANY LLC | 64 | 0.329 | 84.214 |
-| NGL WATER SOLUTIONS DJ LLC | 138 | 0.359 | 49.310 |
-| NOBLE MIDSTREAM SERVICES LLC | 78 | 0.414 | 84.593 |
-| BISON OIL & GAS II LLC | 52 | 0.472 | 88.411 |
-| GRAND RIVER GATHERING LLC | 138 | 0.473 | 63.678 |
-| WPX ENERGY ROCKY MOUNTAIN LLC | 164 | 0.491 | 36.518 |
-| DCP MIDSTREAM LP | 208 | 0.493 | 75.010 |
-| SUMMIT MIDSTREAM PARTNERS LLC | 78 | 0.503 | 56.398 |
-| TALLGRASS WATER WESTERN LLC | 56 | 0.589 | 78.557 |
-| BISON IV OPERATING LLC | 70 | 0.589 | 77.213 |
-| TAPROOT ROCKIES MIDSTREAM LLC | 52 | 0.589 | 57.472 |
-| LARAMIE ENERGY LLC | 286 | 0.595 | 79.758 |
+| Rank | Operator | N | Adj. P(late ≥30) (%) | Adj. P(any delay) (%) |
+| --- | --- | --- | --- | --- |
+| 1 | EOG RESOURCES INC | 104 | 0.3 | 75.0 |
+| 2 | VANGUARD OPERATING LLC | 68 | 0.3 | 91.1 |
+| 3 | BNN WESTERN LLC | 50 | 0.3 | 87.9 |
+| 4 | BERRY PETROLEUM COMPANY LLC | 64 | 0.3 | 84.2 |
+| 5 | NGL WATER SOLUTIONS DJ LLC | 138 | 0.4 | 49.3 |
+| 6 | NOBLE MIDSTREAM SERVICES LLC | 78 | 0.4 | 84.6 |
+| 7 | BISON OIL & GAS II LLC | 52 | 0.5 | 88.4 |
+| 8 | GRAND RIVER GATHERING LLC | 138 | 0.5 | 63.7 |
+| 9 | WPX ENERGY ROCKY MOUNTAIN LLC | 164 | 0.5 | 36.5 |
+| 10 | DCP MIDSTREAM LP | 208 | 0.5 | 75.0 |
+| 11 | SUMMIT MIDSTREAM PARTNERS LLC | 78 | 0.5 | 56.4 |
+| 12 | TALLGRASS WATER WESTERN LLC | 56 | 0.6 | 78.6 |
+| 13 | BISON IV OPERATING LLC | 70 | 0.6 | 77.2 |
+| 14 | TAPROOT ROCKIES MIDSTREAM LLC | 52 | 0.6 | 57.5 |
+| 15 | LARAMIE ENERGY LLC | 286 | 0.6 | 79.8 |
 
