@@ -95,20 +95,20 @@ Note: Standard errors are clustered by operator; model includes operator fixed e
 ### Table H2-C: Mechanism decomposition (by spill type × period)
 | spill_type | period | P_any_delay | E_delay_if_pos |
 | --- | --- | --- | --- |
-| Recent | pre_2020 | 0.7 | 2.03 |
-| Recent | post_2020 | 0.6 | 1.86 |
-| Historical | pre_2020 | 0.7 | 2.38 |
-| Historical | post_2020 | 0.4 | 2.90 |
+| Recent | pre_2020 | 0.745 | 2.03 |
+| Recent | post_2020 | 0.573 | 1.86 |
+| Historical | pre_2020 | 0.702 | 2.38 |
+| Historical | post_2020 | 0.449 | 2.90 |
 
 ## Claim 4: Extreme delays remain rare but increase post-2020 and are concentrated in Historical cases
 
 ### Table H2-D: Predicted probabilities for late30 and late90 (by spill type × period)
 | spill_type | period | P_late30 | P_late90 |
 | --- | --- | --- | --- |
-| Recent | pre_2020 | 0.0 | 0.0 |
-| Recent | post_2020 | 0.0 | 0.0 |
-| Historical | pre_2020 | 0.0 | 0.0 |
-| Historical | post_2020 | 0.0 | 0.0 |
+| Recent | pre_2020 | 0.003650 | 0.000239 |
+| Recent | post_2020 | 0.007531 | 0.003581 |
+| Historical | pre_2020 | 0.025917 | 0.008854 |
+| Historical | post_2020 | 0.040456 | 0.021834 |
 
 ### Table H2-E (Appendix): late30 and late90 logits (core terms)
 **Panel 1: late30 logit (ORs)**
