@@ -155,9 +155,9 @@ Note: Standard errors are clustered by operator; model includes operator fixed e
 ### Table VAR-A: County adjusted predicted probabilities
 | county_norm | n_total | p_late30_adj | p_late90_adj |
 | --- | --- | --- | --- |
-| GARFIELD | 3478 | 0.6 | 0.2 |
-| RIO BLANCO | 2024 | 4.3 | 1.3 |
-| WELD | 20874 | 1.5 | 0.8 |
+| GARFIELD | 3478 | 0.57 | 0.17 |
+| RIO BLANCO | 2024 | 4.35 | 1.28 |
+| WELD | 20874 | 1.46 | 0.81 |
 
 ### Operator risk profiles (Appendix): Top/Bottom 15
 **Top 15 any_delay**
