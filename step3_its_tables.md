@@ -29,9 +29,9 @@ OLS: “Mean log(1+delay) shows a modest post-intervention level drop (−0.106;
 
 **Fit statistics**
 
-| Outcome               | Model                | N (months) | AIC    | BIC   | LogLik  | R² | Adj R² |
-| --------------------- | -------------------- | ---------- | ------ | ----- | ------- | -- | ------ |
-| Overall: P(any delay) | Binomial logit (HAC) | 118        | 1551.8 | 367.0 | -760.92 |    |        |
+| Outcome               | Model                | N (months) | AIC    | LogLik  |
+| --------------------- | -------------------- | ---------- | ------ | ------- |
+| Overall: P(any delay) | Binomial logit (HAC) | 118        | 1551.8 | -760.92 |
 
 Any delay: “The odds of any delay fall at the intervention (OR=0.639; p=0.064), with no evidence of a post-intervention trend shift.”
 
@@ -45,8 +45,8 @@ Any delay: “The odds of any delay fall at the intervention (OR=0.639; p=0.064)
 
 **Fit statistics**
 
-| Outcome              | Model                | N (months) | AIC   | BIC    | LogLik  | R² | Adj R² |
-| -------------------- | -------------------- | ---------- | ----- | ------ | ------- | -- | ------ |
-| Overall: P(late ≥90) | Binomial logit (HAC) | 118        | 520.4 | -113.8 | -245.18 |    |        |
+| Outcome              | Model                | N (months) | AIC   | LogLik  |
+| -------------------- | -------------------- | ---------- | ----- | ------- |
+| Overall: P(late ≥90) | Binomial logit (HAC) | 118        | 520.4 | -245.18 |
 
 Late90: “Extreme-delay odds show no level break but a gradual post-intervention increase in trend (OR=1.027 per month; p=0.065).”
